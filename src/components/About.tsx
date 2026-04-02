@@ -11,7 +11,7 @@ const About = () => {
           and e-commerce. Currently leading programs at Kaiser Permanente, I
           have previously managed 100+ product launches at Paytm Money, built
           operational frameworks at Amazon, and delivered enterprise
-          transformation at TCS. I hold an MBA in Finance from Welingkar
+          transformation at TCS. I hold an MBA in Operations from Welingkar
           Institute of Management and a B.E. in Computer Science. I am
           passionate about bridging business vision with technical execution
           through Agile, SDLC, and data-driven delivery.
