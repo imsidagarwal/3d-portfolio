@@ -7,52 +7,54 @@ import {
   BallCollider,
   Physics,
   RigidBody,
-  CylinderCollider,
   RapierRigidBody,
 } from "@react-three/rapier";
 
 const pmTools = [
-  { abbr: "JI", color: "#0052CC", name: "JIRA" },
-  { abbr: "CO", color: "#172B4D", name: "Confluence" },
-  { abbr: "MT", color: "#6264A7", name: "MS Teams" },
-  { abbr: "XL", color: "#217346", name: "Excel" },
-  { abbr: "AI", color: "#D97757", name: "Claude AI" },
-  { abbr: "PP", color: "#B7472A", name: "PowerPoint" },
-  { abbr: "NO", color: "#333333", name: "Notion" },
-  { abbr: "PM", color: "#F04E37", name: "Program Mgmt" },
+  { name: "JIRA", color: "#0052CC" },
+  { name: "Excel", color: "#217346" },
+  { name: "MS Teams", color: "#6264A7" },
+  { name: "Claude AI", color: "#CF6A3A" },
+  { name: "Confluence", color: "#0052CC" },
+  { name: "PowerPoint", color: "#B7472A" },
+  { name: "Notion", color: "#111111" },
+  { name: "Agile", color: "#E34234" },
 ];
 
-function createTextTexture(abbr: string, bgColor: string): THREE.CanvasTexture {
-  const size = 256;
+function createTextTexture(name: string, color: string): THREE.CanvasTexture {
+  const size = 512;
   const canvas = document.createElement("canvas");
   canvas.width = size;
   canvas.height = size;
   const ctx = canvas.getContext("2d")!;
 
-  // Circle background
-  ctx.fillStyle = bgColor;
+  // White circle background — matches original white balls
+  ctx.fillStyle = "#ffffff";
   ctx.beginPath();
-  ctx.arc(size / 2, size / 2, size / 2 - 4, 0, Math.PI * 2);
+  ctx.arc(size / 2, size / 2, size / 2 - 2, 0, Math.PI * 2);
   ctx.fill();
 
-  // White inner ring
-  ctx.strokeStyle = "rgba(255,255,255,0.3)";
-  ctx.lineWidth = 6;
+  // Light grey border ring
+  ctx.strokeStyle = "rgba(0,0,0,0.08)";
+  ctx.lineWidth = 8;
   ctx.beginPath();
-  ctx.arc(size / 2, size / 2, size / 2 - 14, 0, Math.PI * 2);
+  ctx.arc(size / 2, size / 2, size / 2 - 10, 0, Math.PI * 2);
   ctx.stroke();
 
-  // Abbreviation text
-  ctx.fillStyle = "#ffffff";
-  ctx.font = `bold ${size * 0.32}px Arial, sans-serif`;
+  // Tool name text in brand color
+  const isLong = name.length > 7;
+  const fontSize = isLong ? size * 0.13 : size * 0.18;
+  ctx.fillStyle = color;
+  ctx.font = `bold ${fontSize}px Arial, sans-serif`;
   ctx.textAlign = "center";
   ctx.textBaseline = "middle";
-  ctx.fillText(abbr, size / 2, size / 2);
+  ctx.fillText(name, size / 2, size / 2);
 
   return new THREE.CanvasTexture(canvas);
 }
 
 const sphereGeometry = new THREE.SphereGeometry(1, 28, 28);
+
 const spheres = [...Array(30)].map(() => ({
   scale: [0.7, 1, 0.8, 1, 1][Math.floor(Math.random() * 5)],
 }));
@@ -101,7 +103,6 @@ function SphereGeo({
     >
       <mesh castShadow receiveShadow scale={scale} geometry={sphereGeometry} material={material} />
       <BallCollider args={[scale]} />
-      <CylinderCollider rotation={[Math.PI / 2, 0, 0]} args={[0.15 * scale, scale]} />
     </RigidBody>
   );
 }
@@ -139,30 +140,49 @@ const TechStack = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const materials = useMemo(() =>
-    pmTools.map(
-      (tool) =>
-        new THREE.MeshPhysicalMaterial({
-          map: createTextTexture(tool.abbr, tool.color),
-          roughness: 0.1,
-          envMapIntensity: 0.8,
-          clearcoat: 0.5,
-          clearcoatRoughness: 0.1,
-        })
-    ),
+  const materials = useMemo(
+    () =>
+      pmTools.map(
+        (tool) =>
+          new THREE.MeshPhysicalMaterial({
+            map: createTextTexture(tool.name, tool.color),
+            roughness: 0,
+            envMapIntensity: 1,
+            clearcoat: 1,
+            clearcoatRoughness: 0,
+          })
+      ),
     []
   );
 
   return (
-    <div id="tech">
-      <h5>My Skills &amp; Tool Proficiency</h5>
+    <div id="tech" style={{ position: "relative" }}>
+      {/* Background title — same style as original */}
+      <h5
+        style={{
+          position: "absolute",
+          top: "50%",
+          left: "50%",
+          transform: "translate(-50%, -50%)",
+          zIndex: 1,
+          pointerEvents: "none",
+          fontSize: "clamp(2rem, 5vw, 4rem)",
+          fontWeight: 800,
+          letterSpacing: "0.05em",
+          color: "#ffffff",
+          whiteSpace: "nowrap",
+        }}
+      >
+        MY TOOL PROFICIENCY
+      </h5>
       <Canvas
         gl={{ antialias: true, stencil: false, depth: false, alpha: true }}
         camera={{ position: [0, 0, 20], fov: 32.5, near: 1, far: 100 }}
         onPointerDown={(e) =>
-          e.target instanceof HTMLCanvasElement && e.target.setPointerCapture(e.pointerId)
+          e.target instanceof HTMLCanvasElement &&
+          e.target.setPointerCapture(e.pointerId)
         }
-        style={{ width: "100%", height: "100vh" }}
+        style={{ width: "100%", height: "100vh", position: "relative", zIndex: 2 }}
       >
         <ambientLight intensity={0.5} />
         <Physics gravity={[0, 0, 0]}>
