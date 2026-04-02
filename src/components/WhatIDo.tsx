@@ -1,141 +1,133 @@
-import { useEffect, useRef } from "react";
 import "./styles/WhatIDo.css";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+const services = [
+  {
+    icon: "📋",
+    title: "Program Management",
+    desc: "End-to-end ownership of complex multi-team programs from scoping to delivery across healthcare, fintech & e-commerce.",
+  },
+  {
+    icon: "🗂️",
+    title: "Project Management",
+    desc: "Planning, executing and closing projects on time and within budget using structured PMO frameworks and reporting.",
+  },
+  {
+    icon: "⚙️",
+    title: "JIRA Optimisation",
+    desc: "Designing and standardising JIRA workflows, dashboards, and sprint templates that boost team productivity and visibility.",
+  },
+  {
+    icon: "👥",
+    title: "Team Leadership",
+    desc: "Leading and mentoring cross-functional teams of 20+ members across product and tech, driving outcomes with high morale.",
+  },
+  {
+    icon: "🔄",
+    title: "Agile & Scrum Delivery",
+    desc: "Certified PSM® & PSPO®. Sprint planning, backlog grooming, retrospectives, and continuous delivery for engineering teams.",
+  },
+  {
+    icon: "📊",
+    title: "Process Excellence",
+    desc: "Identifying bottlenecks, designing automation frameworks and saving thousands of work-hours — proven at Amazon & Paytm.",
+  },
+  {
+    icon: "🤝",
+    title: "Stakeholder Management",
+    desc: "Building alignment between business, product, and technology through structured communication and quarterly planning.",
+  },
+  {
+    icon: "🛡️",
+    title: "Risk Management",
+    desc: "Proactively identifying risks, defining mitigation strategies, and maintaining contingency plans across large programmes.",
+  },
+];
 
 const WhatIDo = () => {
-  const sectRef = useRef<(HTMLDivElement | null)[]>([]);
-
-  const setRef = (el: HTMLDivElement | null, index: number) => {
-    sectRef.current[index] = el;
-  };
-
-  useEffect(() => {
-    ScrollTrigger.refresh();
-    sectRef.current.forEach((container) => {
-      if (container) {
-        container.classList.remove("no-touch");
-        const handler = () => handleClick(container, sectRef.current);
-        container.addEventListener("click", handler);
-      }
-    });
-    return () => {
-      sectRef.current.forEach((container) => {
-        if (container) {
-          container.replaceWith(container.cloneNode(true));
-        }
-      });
-    };
-  }, []);
-
   return (
-    <div className="what-IDo">
-      <div className="what-box">
-        <div className="what-box-in">
-          <svg width="100%" height="100%">
-            <line x1="0" y1="0" x2="0" y2="100%" stroke="white" strokeWidth="2" strokeDasharray="7,7" />
-            <line x1="100%" y1="0" x2="100%" y2="100%" stroke="white" strokeWidth="2" strokeDasharray="7,7" />
-          </svg>
+    <div className="what-IDo" id="whatido">
+      <div
+        style={{
+          width: "100%",
+          maxWidth: "1100px",
+          margin: "0 auto",
+          padding: "4rem 2rem",
+        }}
+      >
+        <h2
+          style={{
+            fontSize: "clamp(2.5rem, 6vw, 5rem)",
+            fontWeight: 800,
+            marginBottom: "3rem",
+            lineHeight: 1.1,
+          }}
+        >
+          WHAT <br />
+          <span style={{ color: "#34d399" }}>I DO</span>
+        </h2>
 
-          {/* BOX 1 */}
-          <div className="what-content what-noTouch" ref={(el) => setRef(el, 0)}>
-            <div className="what-border1">
-              <svg height="100%">
-                <line x1="0" y1="0" x2="0" y2="100%" stroke="white" strokeWidth="2" strokeDasharray="9,8" />
-                <line x1="100%" y1="0" x2="100%" y2="100%" stroke="white" strokeWidth="3" strokeDasharray="9,8" />
-              </svg>
-            </div>
-            <div className="what-corner"></div>
-            <div className="what-content-in">
-              <h4>Program &amp; PROJECT MGMT</h4>
-              <p>
-                End-to-end ownership of complex programs across healthcare,
-                fintech, and e-commerce. Expert in multi-team, multi-geography
-                delivery with measurable business impact.
-              </p>
-              <h5>Skillset &amp; tools</h5>
-              <div className="what-content-flex">
-                <div className="what-tag">Program Management</div>
-                <div className="what-tag">Project Planning</div>
-                <div className="what-tag">Risk Management</div>
-                <div className="what-tag">Stakeholder Mgmt</div>
-                <div className="what-tag">PMO Frameworks</div>
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))",
+            gap: "1.25rem",
+          }}
+        >
+          {services.map((s, i) => (
+            <div
+              key={i}
+              style={{
+                background: "rgba(255,255,255,0.04)",
+                border: "1px solid rgba(255,255,255,0.1)",
+                borderRadius: "14px",
+                padding: "1.5rem",
+                transition: "border-color 0.2s, transform 0.2s",
+                cursor: "default",
+              }}
+              onMouseEnter={(e) => {
+                (e.currentTarget as HTMLDivElement).style.borderColor =
+                  "rgba(52,211,153,0.5)";
+                (e.currentTarget as HTMLDivElement).style.transform =
+                  "translateY(-4px)";
+              }}
+              onMouseLeave={(e) => {
+                (e.currentTarget as HTMLDivElement).style.borderColor =
+                  "rgba(255,255,255,0.1)";
+                (e.currentTarget as HTMLDivElement).style.transform =
+                  "translateY(0)";
+              }}
+            >
+              <div style={{ fontSize: "1.8rem", marginBottom: "0.75rem" }}>
+                {s.icon}
               </div>
-              <div className="what-arrow"></div>
-            </div>
-          </div>
-
-          {/* BOX 2 */}
-          <div className="what-content what-noTouch" ref={(el) => setRef(el, 1)}>
-            <div className="what-border1">
-              <svg height="100%">
-                <line x1="0" y1="0" x2="0" y2="100%" stroke="white" strokeWidth="2" strokeDasharray="9,8" />
-                <line x1="100%" y1="0" x2="100%" y2="100%" stroke="white" strokeWidth="3" strokeDasharray="9,8" />
-              </svg>
-            </div>
-            <div className="what-corner"></div>
-            <div className="what-content-in">
-              <h4>Agile &amp; TEAM LEADERSHIP</h4>
-              <p>
-                Certified Scrum Master (PSM®) and Product Owner (PSPO®).
-                Leading and mentoring teams of 20+ across product and tech,
-                driving sprint delivery with high morale and efficiency.
+              <h4
+                style={{
+                  fontSize: "0.95rem",
+                  fontWeight: 700,
+                  letterSpacing: "0.04em",
+                  marginBottom: "0.6rem",
+                  color: "#e2e8f0",
+                  textTransform: "uppercase",
+                }}
+              >
+                {s.title}
+              </h4>
+              <p
+                style={{
+                  fontSize: "0.85rem",
+                  color: "#94a3b8",
+                  lineHeight: 1.6,
+                  margin: 0,
+                }}
+              >
+                {s.desc}
               </p>
-              <h5>Skillset &amp; tools</h5>
-              <div className="what-content-flex">
-                <div className="what-tag">Scrum / Agile</div>
-                <div className="what-tag">Sprint Planning</div>
-                <div className="what-tag">Team Leadership</div>
-                <div className="what-tag">Backlog Grooming</div>
-                <div className="what-tag">SDLC</div>
-              </div>
-              <div className="what-arrow"></div>
             </div>
-          </div>
-
-          {/* BOX 3 */}
-          <div className="what-content what-noTouch" ref={(el) => setRef(el, 2)}>
-            <div className="what-border1">
-              <svg height="100%">
-                <line x1="0" y1="0" x2="0" y2="100%" stroke="white" strokeWidth="2" strokeDasharray="9,8" />
-                <line x1="100%" y1="0" x2="100%" y2="100%" stroke="white" strokeWidth="3" strokeDasharray="9,8" />
-              </svg>
-            </div>
-            <div className="what-corner"></div>
-            <div className="what-content-in">
-              <h4>JIRA &amp; PROCESS OPTIMISATION</h4>
-              <p>
-                Standardising JIRA workflows, automating manual processes, and
-                designing frameworks that save thousands of work-hours.
-                Track record of measurable efficiency gains at Amazon and Paytm Money.
-              </p>
-              <h5>Skillset &amp; tools</h5>
-              <div className="what-content-flex">
-                <div className="what-tag">JIRA</div>
-                <div className="what-tag">Confluence</div>
-                <div className="what-tag">Process Mapping</div>
-                <div className="what-tag">Automation</div>
-                <div className="what-tag">Reporting</div>
-              </div>
-              <div className="what-arrow"></div>
-            </div>
-          </div>
-
+          ))}
         </div>
       </div>
     </div>
   );
 };
-
-function handleClick(
-  container: HTMLDivElement,
-  allRefs: (HTMLDivElement | null)[]
-) {
-  container.classList.toggle("what-content-active");
-  allRefs.forEach((sibling) => {
-    if (sibling && sibling !== container) {
-      sibling.classList.remove("what-content-active");
-    }
-  });
-}
 
 export default WhatIDo;
