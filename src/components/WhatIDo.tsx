@@ -16,7 +16,12 @@ const WhatIDo = () => {
     <div
       className="what-IDo"
       id="whatido"
-      style={{ position: "relative", zIndex: 10 }}
+      style={{
+        position: "relative",
+        zIndex: 10,
+        background: "#080810",
+        width: "100%",
+      }}
     >
       <div
         style={{
