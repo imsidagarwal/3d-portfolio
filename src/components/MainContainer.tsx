@@ -8,7 +8,7 @@ import Navbar from "./Navbar";
 import SocialIcons from "./SocialIcons";
 import WhatIDo from "./WhatIDo";
 import Work from "./Work";
-import setSplitText from "./utils/splitText";
+import setSplitText from "../utils/splitText";
 
 const TechStack = lazy(() => import("./TechStack"));
 
@@ -34,8 +34,24 @@ const MainContainer = ({ children }: PropsWithChildren) => {
       <Cursor />
       <Navbar />
       <SocialIcons />
-      {isDesktopView && children}
-      <div id="smooth-wrapper">
+
+      {/* Character canvas — kept behind scroll content */}
+      <div
+        style={{
+          position: "fixed",
+          top: 0,
+          left: 0,
+          width: "100%",
+          height: "100%",
+          zIndex: 1,
+          pointerEvents: "none",
+        }}
+      >
+        {isDesktopView && children}
+      </div>
+
+      {/* Scrollable content — sits above character */}
+      <div id="smooth-wrapper" style={{ position: "relative", zIndex: 2 }}>
         <div id="smooth-content">
           <div className="container-main">
             <Landing>{!isDesktopView && children}</Landing>
