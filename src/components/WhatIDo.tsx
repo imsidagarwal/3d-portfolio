@@ -3,61 +3,52 @@ import "./styles/WhatIDo.css";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 const WhatIDo = () => {
-  const containerRef = useRef<(HTMLDivElement | null)[]>([]);
-  const setRef = (el: HTMLDivElement | null, index: number) => {
-    containerRef.current[index] = el;
-  };
+  const containerRef = useRef<HTMLDivElement | null>(null);
+  const sectRef = useRef<(HTMLDivElement | null)[]>([]);
+
   useEffect(() => {
-    if (ScrollTrigger.isTouch) {
-      containerRef.current.forEach((container) => {
-        if (container) {
-          container.classList.remove("what-noTouch");
-          container.addEventListener("click", () => handleClick(container));
-        }
-      });
-    }
+    ScrollTrigger.refresh();
+    const containers = containerRef.current;
+    sectRef.current.forEach((container) => {
+      if (container) {
+        container.classList.remove("no-touch");
+        container.addEventListener("click", () => handleClick(container));
+      }
+    });
+
     return () => {
-      containerRef.current.forEach((container) => {
+      sectRef.current.forEach((container) => {
         if (container) {
           container.removeEventListener("click", () => handleClick(container));
         }
       });
     };
   }, []);
+
   return (
-    <div className="whatIDO">
-      <div className="what-box">
-        <h2 className="title">
-          W<span className="hat-h2">HAT</span>
-          <div>
-            I<span className="do-h2"> DO</span>
-          </div>
-        </h2>
-      </div>
+    <div className="what-IDo">
       <div className="what-box">
         <div className="what-box-in">
-          <div className="what-border2">
-            <svg width="100%">
-              <line
-                x1="0"
-                y1="0"
-                x2="0"
-                y2="100%"
-                stroke="white"
-                strokeWidth="2"
-                strokeDasharray="7,7"
-              />
-              <line
-                x1="100%"
-                y1="0"
-                x2="100%"
-                y2="100%"
-                stroke="white"
-                strokeWidth="2"
-                strokeDasharray="7,7"
-              />
-            </svg>
-          </div>
+          <svg width="100%" height="100%">
+            <line
+              x1="0"
+              y1="0"
+              x2="0"
+              y2="100%"
+              stroke="white"
+              strokeWidth="2"
+              strokeDasharray="7,7"
+            />
+            <line
+              x1="100%"
+              y1="0"
+              x2="100%"
+              y2="100%"
+              stroke="white"
+              strokeWidth="2"
+              strokeDasharray="7,7"
+            />
+          </svg>
           <div
             className="what-content what-noTouch"
             ref={(el) => setRef(el, 0)}
@@ -67,44 +58,45 @@ const WhatIDo = () => {
                 <line
                   x1="0"
                   y1="0"
-                  x2="100%"
-                  y2="0"
-                  stroke="white"
-                  strokeWidth="2"
-                  strokeDasharray="6,6"
-                />
-                <line
-                  x1="0"
-                  y1="100%"
-                  x2="100%"
+                  x2="0"
                   y2="100%"
                   stroke="white"
                   strokeWidth="2"
-                  strokeDasharray="6,6"
+                  strokeDasharray="9,8"
+                />
+                <line
+                  x1="100%"
+                  y1="0"
+                  x2="100%"
+                  y2="100%"
+                  stroke="white"
+                  strokeWidth="3"
+                  strokeDasharray="9,8"
                 />
               </svg>
             </div>
+
             <div className="what-corner"></div>
 
             <div className="what-content-in">
-              <h3>AI & AUTOMATION</h3>
-              <h4>Workflow Intelligence for Organizations</h4>
+              <h4>Program &amp; PROJECT MGMT</h4>
               <p>
-                AI specialist helping organizations automate workflows—internal ops
-                and customer-facing—so teams ship faster with less manual work.
+                End-to-end ownership of complex programs — from scoping and
+                planning to delivery and retrospectives. Expert in managing
+                multi-team, multi-geography initiatives at scale.
               </p>
-              <h5>Skillset & tools</h5>
+              <h5>Skillset &amp; tools</h5>
               <div className="what-content-flex">
-                <div className="what-tags">LLMs &amp; agents</div>
-                <div className="what-tags">Workflow design</div>
-                <div className="what-tags">RAG &amp; retrieval</div>
-                <div className="what-tags">Evals &amp; guardrails</div>
-                <div className="what-tags">Integrations</div>
-                <div className="what-tags">Product strategy</div>
+                <div className="what-tag">JIRA</div>
+                <div className="what-tag">Roadmapping</div>
+                <div className="what-tag">PMO</div>
+                <div className="what-tag">Risk Mgmt</div>
+                <div className="what-tag">Stakeholder Mgmt</div>
               </div>
               <div className="what-arrow"></div>
             </div>
           </div>
+
           <div
             className="what-content what-noTouch"
             ref={(el) => setRef(el, 1)}
@@ -113,32 +105,41 @@ const WhatIDo = () => {
               <svg height="100%">
                 <line
                   x1="0"
-                  y1="100%"
-                  x2="100%"
+                  y1="0"
+                  x2="0"
                   y2="100%"
                   stroke="white"
                   strokeWidth="2"
-                  strokeDasharray="6,6"
+                  strokeDasharray="9,8"
+                />
+                <line
+                  x1="100%"
+                  y1="0"
+                  x2="100%"
+                  y2="100%"
+                  stroke="white"
+                  strokeWidth="3"
+                  strokeDasharray="9,8"
                 />
               </svg>
             </div>
+
             <div className="what-corner"></div>
+
             <div className="what-content-in">
-              <h3>BUILD &amp; SCALE</h3>
-              <h4>Shipping AI in Production</h4>
+              <h4>Agile &amp; DELIVERY</h4>
               <p>
-                I build the systems behind it: APIs, data, voice/real-time, and
-                full-stack products—production-ready, not slide decks.
+                Certified Scrum Master and Product Owner. Driving sprint
+                planning, backlog grooming, and continuous delivery for
+                high-performing cross-functional engineering teams.
               </p>
-              <h5>Skillset & tools</h5>
+              <h5>Skillset &amp; tools</h5>
               <div className="what-content-flex">
-                <div className="what-tags">Node.js</div>
-                <div className="what-tags">Python</div>
-                <div className="what-tags">REST &amp; real-time APIs</div>
-                <div className="what-tags">PostgreSQL</div>
-                <div className="what-tags">MongoDB</div>
-                <div className="what-tags">React</div>
-                <div className="what-tags">Cloud &amp; infra</div>
+                <div className="what-tag">Scrum</div>
+                <div className="what-tag">Sprint Planning</div>
+                <div className="what-tag">SDLC</div>
+                <div className="what-tag">Backlog Grooming</div>
+                <div className="what-tag">KPIs</div>
               </div>
               <div className="what-arrow"></div>
             </div>
@@ -153,15 +154,22 @@ export default WhatIDo;
 
 function handleClick(container: HTMLDivElement) {
   container.classList.toggle("what-content-active");
-  container.classList.remove("what-sibling");
-  if (container.parentElement) {
-    const siblings = Array.from(container.parentElement.children);
 
-    siblings.forEach((sibling) => {
-      if (sibling !== container) {
-        sibling.classList.remove("what-content-active");
-        sibling.classList.toggle("what-sibling");
-      }
-    });
-  }
+  const siblings = Array.from(container.parentElement!.children);
+  siblings.forEach((sibling) => {
+    if (sibling !== container) {
+      sibling.classList.remove("what-content-active");
+      sibling.classList.toggle("what-sibling");
+    }
+  });
+
+  siblings.forEach((sibling) => {
+    if (sibling !== container) {
+      sibling.classList.remove("what-sibling");
+    }
+  });
+}
+
+function setRef(el: HTMLDivElement | null, index: number) {
+  // handled inline via ref array
 }
