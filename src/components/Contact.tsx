@@ -29,7 +29,7 @@ const Contact = () => {
             </p>
             <h4>Education</h4>
             <p>
-              MBA (Finance), Welingkar Institute of Management — 2019-2021
+              MBA (Operations), Welingkar Institute of Management — 2019-2021
             </p>
             <p>
               B.E. Computer Science, Sant Gadge Baba Amravati University —
