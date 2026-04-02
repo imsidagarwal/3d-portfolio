@@ -18,17 +18,16 @@ const WhatIDo = () => {
       id="whatido"
       style={{
         position: "relative",
-        zIndex: 10,
-        background: "#080810",
-        width: "100%",
+        zIndex: 5,
+        background: "transparent",
       }}
     >
       <div
         style={{
           position: "relative",
-          zIndex: 10,
+          zIndex: 5,
           width: "100%",
-          maxWidth: "1100px",
+          maxWidth: "1200px",
           margin: "0 auto",
           padding: "6rem 2rem 4rem",
         }}
@@ -51,31 +50,33 @@ const WhatIDo = () => {
         <div
           style={{
             display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
+            gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))",
             gap: "1.25rem",
+            position: "relative",
+            zIndex: 5,
           }}
         >
           {services.map((s, i) => (
             <div
               key={i}
               style={{
-                background: "rgba(10,10,20,0.75)",
-                backdropFilter: "blur(12px)",
-                WebkitBackdropFilter: "blur(12px)",
-                border: "1px solid rgba(255,255,255,0.1)",
+                background: "rgba(8, 8, 18, 0.82)",
+                backdropFilter: "blur(16px)",
+                WebkitBackdropFilter: "blur(16px)",
+                border: "1px solid rgba(255,255,255,0.08)",
                 borderRadius: "14px",
                 padding: "1.5rem",
                 transition: "border-color 0.2s, transform 0.2s",
                 cursor: "default",
                 position: "relative",
-                zIndex: 10,
+                zIndex: 5,
               }}
               onMouseEnter={(e) => {
                 (e.currentTarget as HTMLDivElement).style.borderColor = "rgba(52,211,153,0.5)";
                 (e.currentTarget as HTMLDivElement).style.transform = "translateY(-4px)";
               }}
               onMouseLeave={(e) => {
-                (e.currentTarget as HTMLDivElement).style.borderColor = "rgba(255,255,255,0.1)";
+                (e.currentTarget as HTMLDivElement).style.borderColor = "rgba(255,255,255,0.08)";
                 (e.currentTarget as HTMLDivElement).style.transform = "translateY(0)";
               }}
             >
