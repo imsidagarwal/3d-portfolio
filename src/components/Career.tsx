@@ -8,65 +8,90 @@ const Career = () => {
           My career <span>&</span>
           <br /> experience
         </h2>
+
         <div className="career-info">
           <div className="career-timeline">
             <div className="career-dot"></div>
           </div>
+
           <div className="career-info-box">
             <div className="career-info-in">
               <div className="career-role">
-                <h4>Co-Founder</h4>
-                <h5>CallHQ.ai</h5>
+                <h4>Project Manager II</h4>
+                <h5>Kaiser Permanente</h5>
               </div>
               <h3>NOW</h3>
             </div>
             <p>
-              Building CallHQ.ai, a voice AI platform for
-              automating customer calls, support, and conversions.
+              Leading strategic project management initiatives within one of the
+              largest non-profit health plans in the US. Driving Agile delivery,
+              stakeholder alignment, and cross-functional collaboration to
+              improve healthcare program outcomes.
             </p>
           </div>
+
           <div className="career-info-box">
             <div className="career-info-in">
               <div className="career-role">
-                <h4>Adobe</h4>
-                <h5>6+ years · Noida</h5>
+                <h4>Sr. Technical Program Manager</h4>
+                <h5>Paytm Money</h5>
               </div>
-              <h3>2017–24</h3>
+              <h3>2024-25</h3>
             </div>
             <p>
-              Senior Lead Software Engineer (Feb 2024 – May 2024). Lead Software
-              Engineer (Feb 2021 – Feb 2024). Software Engineer II (Dec 2017 –
-              Feb 2021): internationalization, globalization, and localization for
-              Adobe Technical Communication Suite; functional and linguistic testing
-              strategy; in-house tooling; collaboration with product and engineering
-              for high-quality localized releases.
+              Led end-to-end delivery of complex product and technical programs
+              across the Paytm Money platform. Managed cross-functional teams
+              and drove roadmap alignment between business and engineering.
             </p>
           </div>
+
           <div className="career-info-box">
             <div className="career-info-in">
               <div className="career-role">
-                <h4>Consultant</h4>
-                <h5>Genpact Headstrong </h5>
+                <h4>Technical Program Manager</h4>
+                <h5>Paytm Money</h5>
               </div>
-              <h3>2016–17</h3>
+              <h3>2022-24</h3>
             </div>
             <p>
-              Sep 2016 – Nov 2017. Developed and maintained WCF services consumed
-              by the UI; deployment support across environments; NUnit tests and
-              coverage; bug fixes from QA and users; database work.
+              Managed and launched 100+ features on the Paytm Money App,
+              enhancing customer experience at scale. Led, trained, and mentored
+              20 Product Managers and 4 Tech Managers. Streamlined product and
+              tech processes using JIRA with weekly and quarterly brainstorming
+              sessions driving continuous improvement.
             </p>
           </div>
+
           <div className="career-info-box">
             <div className="career-info-in">
               <div className="career-role">
-                <h4>Sf Engineer</h4>
-                <h5>Infogain</h5>
+                <h4>Program Manager</h4>
+                <h5>Amazon</h5>
               </div>
-              <h3>2013-16</h3>
+              <h3>2021-22</h3>
             </div>
             <p>
-              Software engineering across enterprise projects, contributing to
-              design, development, and delivery of business applications.
+              Built a Master Gantt Chart as a single source of truth for 68 MSD
+              reduction projects across NA, EU and CA. Managed the
+              "Automatezilla" team to drive efficiency of 39 manual processes,
+              saving 4,000 work-hours. Initiated "TIPS" — an injury-specific
+              solutions program reducing overall injury rates.
+            </p>
+          </div>
+
+          <div className="career-info-box">
+            <div className="career-info-in">
+              <div className="career-role">
+                <h4>System Engineer</h4>
+                <h5>Tata Consultancy Services</h5>
+              </div>
+              <h3>2016-19</h3>
+            </div>
+            <p>
+              Served as PMO for the Jaguar Land Rover project. Managed resource
+              forecasting and capacity planning. Worked as a Big Data Developer
+              on the US-based "Nielsen" project in the media research domain —
+              analysed traffic and generated actionable reports.
             </p>
           </div>
         </div>
