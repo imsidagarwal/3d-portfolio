@@ -101,7 +101,7 @@ function SphereGeo({
     >
       <mesh castShadow receiveShadow scale={scale} geometry={sphereGeometry} material={material} />
       <BallCollider args={[scale]} />
-      <CylinderCollider rotation={[Math.PI / 2, 0, 0]} args={[0.15 * scale, scale, 0.275 * scale]} />
+      <CylinderCollider rotation={[Math.PI / 2, 0, 0]} args={[0.15 * scale, scale]} />
     </RigidBody>
   );
 }
