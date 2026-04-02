@@ -5,32 +5,32 @@ import { MdArrowBack, MdArrowForward } from "react-icons/md";
 
 const projects = [
   {
-    title: "CallHQ",
-    category: "Voice AI Calling Platform",
-    tools: "Voice AI, Calling Automation, CRM Integrations",
+    title: "Automatezilla",
+    category: "Process Automation Program — Amazon",
+    tools: "Gantt Charts, Process Mapping, Work-hour Analysis, PMO Frameworks",
     image: "/images/callhq.png",
-    link: "https://callhq.ai",
+    link: "https://www.linkedin.com/in/imsidagrawal/",
   },
   {
-    title: "Whatsapp Automation",
-    category: "WABA Application",
-    tools: "WhatsApp Business API, Workflow Automation, Notifications",
+    title: "TIPS Program",
+    category: "Injury Reduction Initiative — Amazon",
+    tools: "Flyers, PPTs, Video Modules, Data Analysis, Cross-team Collaboration",
     image: "/images/whatsapp.png",
-    link: "https://whatsapp.callhq.ai",
+    link: "https://www.linkedin.com/in/imsidagrawal/",
   },
   {
-    title: "Broki",
-    category: "Real Estate Platform for FnB Industry",
-    tools: "Property Discovery, Lead Management, Marketplace Workflows",
+    title: "Paytm Money — 100+ Features",
+    category: "Product & Tech Program Management",
+    tools: "JIRA, Roadmapping, Sprint Planning, Stakeholder Management, SDLC",
     image: "/images/broki.png",
-    link: "https://broki.in",
+    link: "https://www.linkedin.com/in/imsidagrawal/",
   },
   {
-    title: "Orrdr.com",
-    category: "Ecommerce Platform and Mobile App",
-    tools: "Ecommerce, Mobile Experience, Order Management",
-    image: "/images/orrdr.png",
-    link: "https://orrdr.com",
+    title: "Kaiser Permanente",
+    category: "Healthcare Program Management",
+    tools: "Agile, Project Planning, Stakeholder Alignment, Hybrid Delivery",
+    image: "/images/ordrr.png",
+    link: "https://www.linkedin.com/in/imsidagrawal/",
   },
 ];
 
@@ -48,20 +48,20 @@ const Work = () => {
     [isAnimating]
   );
 
-  const goToPrev = useCallback(() => {
+  const gotoPrev = useCallback(() => {
     const newIndex =
       currentIndex === 0 ? projects.length - 1 : currentIndex - 1;
     goToSlide(newIndex);
   }, [currentIndex, goToSlide]);
 
-  const goToNext = useCallback(() => {
+  const gotoNext = useCallback(() => {
     const newIndex =
       currentIndex === projects.length - 1 ? 0 : currentIndex + 1;
     goToSlide(newIndex);
   }, [currentIndex, goToSlide]);
 
   return (
-    <div className="work-section" id="work">
+    <div className="work-main-section" id="work">
       <div className="work-container section-container">
         <h2>
           My <span>Work</span>
@@ -71,7 +71,7 @@ const Work = () => {
           {/* Navigation Arrows */}
           <button
             className="carousel-arrow carousel-arrow-left"
-            onClick={goToPrev}
+            onClick={gotoPrev}
             aria-label="Previous project"
             data-cursor="disable"
           >
@@ -79,7 +79,7 @@ const Work = () => {
           </button>
           <button
             className="carousel-arrow carousel-arrow-right"
-            onClick={goToNext}
+            onClick={gotoNext}
             aria-label="Next project"
             data-cursor="disable"
           >
@@ -99,17 +99,17 @@ const Work = () => {
                   <div className="carousel-content">
                     <div className="carousel-info">
                       <div className="carousel-number">
-                        <h3>0{index + 1}</h3>
+                        <h2>0{index + 1}</h2>
                       </div>
                       <div className="carousel-details">
                         <h4>{project.title}</h4>
                         <p className="carousel-category">
                           {project.category}
                         </p>
-                        <div className="carousel-tools">
-                          <span className="tools-label">Tools & Features</span>
+                        <p>
+                          <span className="carousel-tools-label">Tools & Features</span>
                           <p>{project.tools}</p>
-                        </div>
+                        </p>
                       </div>
                     </div>
                     <div className="carousel-image-wrapper">
@@ -130,8 +130,7 @@ const Work = () => {
             {projects.map((_, index) => (
               <button
                 key={index}
-                className={`carousel-dot ${index === currentIndex ? "carousel-dot-active" : ""
-                  }`}
+                className={`carousel-dot ${index === currentIndex ? "carousel-dot-active" : ""}`}
                 onClick={() => goToSlide(index)}
                 aria-label={`Go to project ${index + 1}`}
                 data-cursor="disable"
