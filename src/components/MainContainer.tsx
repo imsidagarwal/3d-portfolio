@@ -32,11 +32,9 @@ const MainContainer = ({ children }: PropsWithChildren) => {
       <Navbar />
       <SocialIcons />
 
-      {/* Character canvas — untouched, stays in natural position */}
       {isDesktopView && children}
 
-      {/* Scrollable content — z-index: 2 so WhatIDo cards sit above character */}
-      <div id="smooth-wrapper" style={{ position: "relative", zIndex: 2 }}>
+      <div id="smooth-wrapper">
         <div id="smooth-content">
           <div className="container-main">
             <Landing>{!isDesktopView && children}</Landing>
